@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   View,
   Text,
 } from 'react-native'
 import styled from 'styled-components/native'
+import SignUp from './src/components/auth/signup'
 
 const Container = styled.View`
   display: flex;
@@ -14,10 +15,14 @@ const Container = styled.View`
 `
 
 const App = () => {
+  const [isAuth, setIsAuth] = useState<boolean>(false)
+  if (!isAuth) {
+    return <SignUp />
+  }
   return (
     <Container>
       <Text>
-        Hello World!
+        Hello World
       </Text>
     </Container>
   )
