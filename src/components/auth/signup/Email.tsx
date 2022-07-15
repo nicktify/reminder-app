@@ -1,6 +1,7 @@
 import React from "react"
 import KeyboardView from "../../view/keyboard"
 import styled from "styled-components/native"
+import Input from './Input'
 
 const Container = styled.View`
   display: flex;
@@ -8,16 +9,6 @@ const Container = styled.View`
   align-items: center;
   height: 100%;
   width: 100%;
-`
-
-const EmailInput = styled.TextInput`
-  width: 80%;
-  align-self: center;
-  border-radius: 15px;
-  height: 50px;
-  background-color: #ebebeb;
-  margin-bottom: 50px;
-  padding: 10px;
 `
 
 interface Props {
@@ -31,12 +22,12 @@ const Email = ({ email, setEmail, step, setStep }: Props) => {
   return (
     <KeyboardView>
       <Container>
-        <EmailInput
+        <Input
           placeholder="Ingrese su correo electrónico"
           keyboardType="email-address"
           value={email}
           onChangeText={(text: string) => setEmail(text)}
-          autoFocus={true}
+          autoFocus
           returnKeyType="next"
           onSubmitEditing={() => setStep(step + 1)}
         />

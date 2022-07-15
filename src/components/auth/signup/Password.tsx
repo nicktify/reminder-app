@@ -1,5 +1,6 @@
 import React from "react"
 import KeyboardView from "../../view/keyboard"
+import Input from './Input'
 import styled from "styled-components/native"
 
 const Container = styled.View`
@@ -10,29 +11,29 @@ const Container = styled.View`
   width: 100%;
 `
 
-const EmailInput = styled.TextInput`
-  width: 80%;
-  align-self: center;
-  border-radius: 15px;
-  height: 50px;
-  background-color: #ebebeb;
-  margin-bottom: 50px;
-  padding: 10px;
-`
-
 interface Props {
-  password: string
-  setPassword: (text: string) => void
+  password: string;
+  setPassword: (text: string) => void;
+  step: number;
+  setStep: (step: number) => void;
 }
 
-const Password = ({ password, setPassword }: Props) => {
+const Password = ({
+  password,
+  setPassword,
+  step,
+  setStep,
+}: Props) => {
   return (
     <KeyboardView>
       <Container>
-        <EmailInput
+        <Input
           placeholder="Contraseña"
           value={password}
           onChangeText={(text: string) => setPassword(text)}
+          onSubmitEditing={() => setStep(step + 1)}
+          autoFocus
+          returnKeyType="next"
         />
       </Container>
     </KeyboardView>
@@ -40,3 +41,4 @@ const Password = ({ password, setPassword }: Props) => {
 }
 
 export default Password;
+
